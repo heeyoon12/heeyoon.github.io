@@ -1,264 +1,509 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yang HeeYoon · Portfolio</title>
-  <meta name="description" content="양희윤 · Java & Spring 개발자 포트폴리오" />
-  <meta name="theme-color" content="#f4f6ff" />
-  <!-- SUIT Variable (CDN) -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css"/>
-  <!-- Favicon (원하면 교체) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23c7d2fe'/><text x='50' y='60' font-size='58' text-anchor='middle' fill='%233b82f6'>Y</text></svg>">
-  <style>
-    :root{
-      /* Pastel theme tokens */
-      --bg: #f7f8ff;           /* 배경 */
-      --card: #ffffff;         /* 카드 */
-      --ink: #0f172a;          /* 본문 텍스트 */
-      --muted: #475569;        /* 보조 텍스트 */
-      --primary: #7c91ff;      /* 포인트 */
-      --primary-ink: #0b1220;  
-      --ring: #c7d2fe;
-      --border: #e5e7eb;
-      --chip: #eef2ff;
-      --ok: #10b981; --warn:#f59e0b; --bad:#ef4444;
-      --radius: 16px;
-      --shadow: 0 10px 25px rgba(79,70,229,.12);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:"SUIT", system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
-      background:linear-gradient(180deg, var(--bg), #ffffff 50%, var(--bg));
-      color:var(--ink);
-    }
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    .container{max-width:1080px; margin:0 auto; padding:0 20px}
-    header{
-      position:sticky; top:0; z-index:20; backdrop-filter:saturate(180%) blur(8px);
-      background:rgba(255,255,255,.7); border-bottom:1px solid var(--border);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .brand{font-weight:800; letter-spacing:.2px}
-    .brand b{color:var(--primary)}
-    .menu{display:flex; gap:18px}
-    .menu a{padding:8px 12px; border-radius:999px}
-    .menu a:hover{background:var(--chip)}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; border:1px solid var(--border); background:var(--card); box-shadow:var(--shadow)}
-    .btn.primary{background:var(--primary); color:white; border-color:transparent}
-    .btn.ghost{background:transparent}
-    .btn:focus{outline:3px solid var(--ring)}
-    /* Hero */
-    .hero{padding:80px 0 32px}
-    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:center}
-    .title{font-weight:900; line-height:1.1; font-size: clamp(28px, 4vw, 44px)}
-    .lead{color:var(--muted); font-size:clamp(14px, 2.2vw, 18px)}
-    .chips{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0}
-    .chip{background:var(--chip); border:1px dashed var(--border); padding:8px 12px; border-radius:999px; font-size:14px}
-    .hero-card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
-    /* Sections */
-    section{padding:48px 0}
-    .section-title{font-weight:800; font-size:24px; margin-bottom:14px}
-    .section-desc{color:var(--muted); margin-bottom:24px}
-    /* Projects */
-    .grid{display:grid; gap:16px}
-    .grid.projects{grid-template-columns:repeat(12,1fr)}
-    .card{
-      grid-column: span 12;
-      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
-      display:flex; flex-direction:column; gap:12px
-    }
-    .card:hover{transform:translateY(-2px); transition:.2s ease;}
-    .card .meta{display:flex; gap:10px; align-items:center; color:var(--muted); font-size:14px}
-    .tags{display:flex; gap:8px; flex-wrap:wrap}
-    .tag{font-size:12px; padding:6px 10px; background:var(--chip); border:1px solid var(--border); border-radius:999px}
-    .links{display:flex; gap:10px; margin-top:auto}
-    .links a{border:1px solid var(--border); border-radius:10px; padding:8px 10px}
-    /* About */
-    .about{display:grid; grid-template-columns:1fr 1fr; gap:18px}
-    .about .stack{display:flex; flex-wrap:wrap; gap:10px}
-    /* Contact */
-    .contact{display:flex; gap:12px; flex-wrap:wrap}
-    footer{padding:32px 0; color:var(--muted); border-top:1px solid var(--border)}
-    /* Responsive */
-    @media (min-width:740px){
-      .card{grid-column: span 6}
-    }
-    @media (min-width:1024px){
-      .card{grid-column: span 4}
-    }
-    @media (max-width:860px){
-      .hero-grid{grid-template-columns:1fr}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Yang Heeyoon | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SUIT 폰트 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css">
+
+    <style>
+        :root {
+            --bg: #f7f7fb;
+            --card: #ffffff;
+            --accent: #222222;
+            --accent-soft: #ffe3cf;
+            --text-main: #222222;
+            --text-sub: #666666;
+            --border: #f0d8c6;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: "SUIT", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(247, 247, 251, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px 20px 40px;
+        }
+
+        section {
+            margin-bottom: 52px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* Hero 섹션 */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 40px 24px;
+            background: #ffffff;
+            /* 수정: 흰색 */
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        #hero h1 {
+            font-size: 2rem;
+        }
+
+        #hero .subtitle {
+            font-size: 1rem;
+            color: var(--text-sub);
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            font-size: 0.9rem;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn-outline {
+            background: #ffffff;
+            color: var(--accent);
+        }
+
+        /* 카드 공통 스타일 */
+        .card {
+            background: var(--card);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 18px 20px;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.75rem;
+            margin-right: 4px;
+        }
+
+        /* Skills 섹션 */
+        .skills-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .skills-groups ul {
+            list-style: none;
+            margin-top: 6px;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .skills-groups li::before {
+            content: "• ";
+            color: var(--accent);
+        }
+
+        /* Projects 섹션 */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 20px;
+        }
+
+        /* 각 카드 내용 크기 축소 */
+        .project-card,
+        .card {
+            padding: 16px 18px;
+            /* 전체 패딩 살짝 줄임 */
+        }
+
+        /* 이미지 크기 조절 */
+        .project-card img,
+        .card img {
+            width: 100%;
+            max-height: 240px;
+            /* 너무 커지지 않도록 제한 */
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .project-footer {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-footer .btn {
+            font-size: 0.85rem;
+        }
+
+        /* Education 섹션 */
+        .edu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 0.92rem;
+        }
+
+        .edu-item-title {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .edu-item-period {
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+
+        /* Contact 섹션 */
+        .contact-info {
+            font-size: 0.95rem;
+        }
+
+        .contact-info div {
+            margin-bottom: 4px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 16px 12px 24px;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            #hero {
+                padding: 28px 20px;
+            }
+
+            #hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .nav ul {
+                gap: 10px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <a href="#main" class="sr-only">본문 바로가기</a>
-  <header aria-label="상단 내비게이션">
-    <div class="container nav">
-      <div class="brand">hee<b>12</b>.portfolio</div>
-      <nav class="menu" aria-label="주요 메뉴">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="btn ghost" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-      </nav>
-    </div>
-  </header>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <h1 class="title">Java & Spring 기반의 백엔드 중심 개발자, <span style="color:var(--primary)">양희윤</span>입니다.</h1>
-          <p class="lead">Eum(고양이 커뮤니티), BusRouteSite(대중교통 경로), MysteryDungeonGame(콘솔 RPG) 등<br>데이터 모델링과 API 연동, 사용자 경험을 중요하게 생각합니다.</p>
-          <div class="chips" aria-label="핵심 키워드">
-            <span class="chip">Java · Spring MVC/Boot</span>
-            <span class="chip">MyBatis · JPA</span>
-            <span class="chip">MariaDB · SQL 설계</span>
-            <span class="chip">Mustache · JSP · Tiles</span>
-            <span class="chip">Git · GitHub Actions</span>
-          </div>
-          <div class="contact">
-            <a class="btn primary" href="#projects" aria-label="프로젝트 보러가기">대표 프로젝트 보기</a>
-            <a class="btn" href="assets/resume.pdf" target="_blank" rel="noreferrer" aria-label="이력서 열기">이력서(PDF)</a>
-          </div>
-        </div>
-        <div class="hero-card" role="img" aria-label="요약 카드">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4 2.5 7-7-4.5L5.5 20 8 13 2 9h7l3-7z" stroke="currentColor"/></svg>
-            <strong>대표 성과</strong>
-          </div>
-          <ul style="margin:10px 0 0 22px; line-height:1.85">
-            <li>MyBatis 매퍼·VO 정합성 개선으로 <b>Reflection 오류 제거</b></li>
-            <li>Transit API 연동 및 DB 영속화 <b>엔드투엔드 구성</b></li>
-            <li>Tiles → Mustache 전환, <b>레이아웃 단일화</b>로 유지보수성 향상</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <header>
+        <nav class="nav">
+            <div class="logo">Yang Heeyoon</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Projects -->
-    <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-desc">깃허브 저장소와 배포 링크를 함께 제공합니다. (카드는 아래 <code>projects</code> 배열만 수정하면 자동으로 갱신돼요)</p>
-        <div class="grid projects" id="projectGrid" aria-live="polite"></div>
-      </div>
-    </section>
+    <main>
 
-    <!-- About -->
-    <section id="about">
-      <div class="container about">
-        <div>
-          <h2 class="section-title">About</h2>
-          <p class="section-desc">구조적 OOP와 데이터 정합성에 진심인 개발자입니다. 도메인 모델·ERD·Mapper·템플릿이 <em>끝까지 일치</em>하도록 설계하고, 팀 내 가이드를 문서화합니다.</p>
-          <ul style="line-height:1.9; padding-left:18px">
-            <li>관심사: 고양이, UX 디테일, 빌드/배포 자동화</li>
-            <li>학습: 정보처리기사, 대용량 트랜잭션/인덱스 튜닝</li>
-            <li>도구: IntelliJ & Eclipse, SourceTree, MySQL/MariaDB</li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="margin:0 0 10px 0">Tech Stack</h3>
-          <div class="stack">
-            <span class="tag">Java 17</span>
-            <span class="tag">Spring MVC / Boot 3</span>
-            <span class="tag">MyBatis · JPA</span>
-            <span class="tag">MariaDB / MySQL</span>
-            <span class="tag">Mustache / JSP / Tiles</span>
-            <span class="tag">Gradle / Maven</span>
-            <span class="tag">Git / GitHub Actions</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div>
+                <h1>Yang Heeyoon</h1>
+                <p class="subtitle">
+                    Java & Spring 기반 웹 개발자를 꿈꾸는 주니어 개발자입니다.
+                </p>
+            </div>
 
-    <!-- Contact -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-desc">프로젝트/협업 문의는 아래 채널로 연락해주세요.</p>
-        <div class="contact">
-          <!-- TODO: 희윤 님 선호 이메일(별칭)로 교체 -->
-          <a class="btn" href="mailto:contact@hee12.dev" aria-label="이메일 보내기">이메일</a>
-          <a class="btn" href="https://github.com/your-github-id" target="_blank" rel="noreferrer" aria-label="깃허브 열기">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="링크드인 열기">LinkedIn</a>
-        </div>
-      </div>
-    </section>
-  </main>
+            <!-- 이곳에 내용 추가: 간단한 자기소개 한 줄 또는 목표 추가 가능 -->
 
-  <footer>
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <small>© <span id="year"></span> Yang HeeYoon. All rights reserved.</small>
-      <a href="#" class="btn ghost" aria-label="맨 위로">Top ↑</a>
-    </div>
-  </footer>
+            <div class="hero-buttons">
+                <a href="https://github.com/heeyoon12" target="_blank" class="btn btn-primary">GitHub</a>
+                <a href="#projects" class="btn btn-outline">대표 프로젝트 보기</a>
+                <a class="btn" href="assets/resume.pdf" target="_blank" rel="noreferrer" aria-label="이력서 열기">이력서(PDF)</a>
+            </div>
+        </section>
 
-  <script>
-    // 연도 자동
-    document.getElementById('year').textContent = new Date().getFullYear();
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="card">
+                <p>
+                    Java(Spring MVC, Spring Boot)을 중심으로 한 웹 개발에 관심이 있으며,
+                    DB 설계와 공공데이터·외부 API 연동을 통해 실제로 동작하는 웹 서비스를 만드는 경험을 쌓고 있습니다.
+                    사용자 관점에서 UI와 흐름을 고민하는 것을 좋아하고,
+                    꾸준히 프로젝트를 개선해 나가는 과정을 중요하게 생각합니다.
+                </p>
 
-    // ▼ 프로젝트 카드 구성만 수정하면 됩니다.
-    const projects = [
-      {
-        title: 'Eum · 고양이 커뮤니티',
-        desc: '게시판/지원매칭/관리자 모듈 · MyBatis 매퍼 정합성 개선 · Tiles→Mustache 전환',
-        tags: ['Spring MVC','MyBatis','MariaDB','Tiles→Mustache'],
-        repo: 'https://github.com/your-github-id/eum',
-        demo: '#',
-        highlight: 'APPLIED/SELECTED 워크플로우, FK/인덱스 정리'
-      },
-      {
-        title: 'BusRouteSite · 대중교통 경로',
-        desc: 'SK T-map Transit/POI API 연동 · WebClient 구성 · 경로 요약 DB 영속화',
-        tags: ['Spring Boot','WebClient','API','Mustache','JPA'],
-        repo: 'https://github.com/your-github-id/bus-route-site',
-        demo: '#',
-        highlight: '요금/소요시간 렌더 · transit_route 테이블'
-      },
-      {
-        title: 'MysteryDungeonGame · 콘솔 RPG',
-        desc: '전투/맵/아이템/보스전 로직 · 구조적 OOP · 플레이어 경험 중심 설계',
-        tags: ['Java','OOP','게임로직'],
-        repo: 'https://github.com/your-github-id/mystery-dungeon-game',
-        demo: '#',
-        highlight: '턴제 전투, 탐험 구조, 난이도 밸런싱'
-      }
-    ];
+                <!-- 이곳에 내용 추가: 개발 철학, 장점, 앞으로의 목표 등 -->
+            </div>
+        </section>
 
-    const grid = document.getElementById('projectGrid');
-    projects.forEach(p => {
-      const el = document.createElement('article');
-      el.className = 'card';
-      el.innerHTML = `
-        <div class="meta">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l9 6-9 6-9-6 9-6z" stroke="currentColor"/></svg>
-          <span>${p.highlight}</span>
-        </div>
-        <h3 style="margin:0; font-size:18px">${p.title}</h3>
-        <p style="margin:0; color:var(--muted)">${p.desc}</p>
-        <div class="tags">${p.tags.map(t=>`<span class='tag'>${t}</span>`).join('')}</div>
-        <div class="links">
-          ${p.repo ? `<a href="${p.repo}" target="_blank" rel="noreferrer" aria-label="깃허브 저장소">↗ Repository</a>` : ''}
-          ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noreferrer" aria-label="데모 보기">▶ Demo</a>` : ''}
-        </div>
-      `;
-      grid.appendChild(el);
-    });
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
 
-    // 부드러운 스크롤
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        if(id.length > 1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth'}); }
-      })
-    })
-  </script>
+            <div class="skills-groups">
+
+                <div class="card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Java</li>
+                        <li>Spring Boot / Spring MVC</li>
+                        <li>MyBatis</li>
+                        <li>JPA / Hibernate</li>
+                        <li>MariaDB / MySQL</li>
+                    </ul>
+                    <!-- 이곳에 내용 추가: 백엔드 관련 추가 경험 -->
+                </div>
+
+                <div class="card">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>HTML / CSS / JavaScript</li>
+                        <li>Mustache Template</li>
+                        <li>JSP / Tiles</li>
+                    </ul>
+                    <!-- 이곳에 내용 추가: 프론트엔드에서 신경썼던 부분 -->
+                </div>
+
+                <div class="card">
+                    <h3>Tools & Etc.</h3>
+                    <ul>
+                        <li>Eclipse / IntelliJ</li>
+                        <li>Git / GitHub / SourceTree</li>
+                        <li>DB 설계 및 SQL</li>
+                    </ul>
+                    <!-- 이곳에 내용 추가: 협업 도구, 버전 관리 경험 등 -->
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="project-list">
+
+                <!-- Eum 프로젝트 카드 -->
+                <div class="project-card card">
+                    <div class="card">
+                        <span class="tag">Spring MVC</span>
+                        <span class="tag">MyBatis</span>
+                        <h3>Eum – 고양이 커뮤니티 & 도움 매칭 플랫폼</h3>
+
+                        <!-- 포트폴리오 레포의 images/eum_main.png 경로에 이미지 업로드 -->
+                        <img src="images/eum_main.png" alt="Eum 메인 화면"
+                            style="width:100%; border-radius:12px; margin: 12px 0;">
+
+                        <p>
+                            도움이 필요한 사람들과 도움을 주고 싶은 사람들을 연결하는 플랫폼입니다.
+                            서비스 소개 · 이용 방법 · 공지, 그리고 회원가입/로그인과 도움 요청/제안 흐름을
+                            하나의 서비스로 설계하고 구현했습니다.
+                        </p>
+
+                        <!-- 이곳에 내용 추가: 담당 역할, 기술적 포인트, 트러블슈팅 경험 등 -->
+
+                        <div class="project-footer">
+                            <a href="https://github.com/heeyoon12/eum_project" target="_blank" class="btn btn-outline">
+                                GitHub 저장소
+                            </a>
+                            <a href="http://eum12.cafe24.com/" target="_blank" class="btn btn-primary">
+                                서비스 접속하기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 고양이 커뮤니티/정보 사이트 카드 -->
+                <div class="card">
+                    <span class="tag">HTML/CSS/JS</span>
+                    <span class="tag">UI/UX</span>
+                    <h3>Cat World – 고양이 정보 & 커뮤니티 사이트</h3>
+
+                    <!-- 포트폴리오 레포의 images/cat_main.png 경로에 이미지 업로드 -->
+                    <img src="images/cat_main.png" alt="Cat World 메인 화면"
+                        style="width:100%; border-radius:12px; margin: 12px 0;">
+
+                    <p>
+                        고양이 등록, 오늘의 인기 고양이, 후기 게시판, 기초 정보 등
+                        고양이를 처음 키우는 집사들이 정보를 얻고 소통할 수 있도록 구성한 웹사이트입니다.
+                        부드러운 파스텔톤 UI와 JavaScript 인터랙션을 직접 구현했습니다.
+                    </p>
+
+                    <!-- 이곳에 내용 추가: 디자인 의도, 사용자 경험 개선 포인트 등 -->
+
+                    <div class="project-footer">
+                        <a href="https://github.com/heeyoon12/cat_project" target="_blank" class="btn btn-outline">
+                            GitHub 저장소
+                        </a>
+                        <a href="http://didhost.dothome.co.kr/main.html" target="_blank" class="btn btn-primary">
+                            서비스 접속하기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 이곳에 내용 추가: 추후 공공데이터/버스노선 등 프로젝트 카드 추가 가능 -->
+
+            </div>
+        </section>
+
+        <!-- Education / Training Section -->
+        <section id="education">
+            <h2>Education</h2>
+
+            <div class="card">
+                <p style="margin-bottom: 8px; font-size: 0.9rem; color: var(--text-sub);">
+                    코리아IT아카데미 수료 과정
+                </p>
+
+                <div class="edu-list">
+                    <div>
+                        <div class="edu-item-title">C언어</div>
+                        <div class="edu-item-period">2025-03-17 ~ 2025-05-12</div>
+                    </div>
+
+                    <div>
+                        <div class="edu-item-title">DBMS</div>
+                        <div class="edu-item-period">2025-03-30 ~ 2025-04-27</div>
+                    </div>
+
+                    <div>
+                        <div class="edu-item-title">SQLD</div>
+                        <div class="edu-item-period">2025-05-04 ~ 2025-05-25</div>
+                    </div>
+
+                    <div>
+                        <div class="edu-item-title">자바</div>
+                        <div class="edu-item-period">2025-05-14 ~ 2025-07-09</div>
+                    </div>
+
+                    <div>
+                        <div class="edu-item-title">
+                            (디지털 컨버전스) 공공데이터 융합 풀스택 개발자 양성과정
+                        </div>
+                        <div class="edu-item-period">2025-04-29 ~ 2025-10-21</div>
+                    </div>
+
+                    <div>
+                        <div class="edu-item-title">파이썬</div>
+                        <div class="edu-item-period">2025-10-15 ~ 2025-12-08</div>
+                    </div>
+                </div>
+
+                <!-- 이곳에 내용 추가: 수료 후 느낀 점, 프로젝트와의 연계, 자격증 등 -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="card contact-info">
+                <div>📞 전화번호: <a href="tel:01022548516">010-2254-8516</a></div>
+                <div>✉️ 이메일: <a href="mailto:didhee12@gmail.com">didhee12@gmail.com</a></div>
+
+                <!-- 이곳에 내용 추가: 연락 가능 시간, 블로그/노션 등 추가 링크 -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2025 Yang Heeyoon. All rights reserved.
+    </footer>
+
 </body>
+
 </html>
